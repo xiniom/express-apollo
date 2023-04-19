@@ -1,24 +1,28 @@
-import express from 'express';
-import { ApolloServer, gql } from 'apollo-server-express';
+import { ApolloServer,  } from '@apollo/server';
+import { startStandaloneServer } from '@apollo/server/standalone';
 import { readFileSync } from 'fs';
 import { resolvers } from './resolvers.js';
 import PersonAPI from './datasources/person.js';
+import CountryAPI from './datasources/country.js';
 
 const port = 4000;
-const path = '/graphql';
-const app = express();  
-
 const server = new ApolloServer({
-    typeDefs: gql(readFileSync('./schema.gql', { encoding: 'utf8' })),
-    dataSources: () => ({
-        personAPI: new PersonAPI(),
-    }),
+    typeDefs: readFileSync('./schema.gql', { encoding: 'utf8' }),
     resolvers,
 });
-  
-server.start().then(res => {
-    server.applyMiddleware({ app, path });
-    app.listen({ port }, () => console.log(`GraphQL Server running at http://localhost:${port}/graphql`));
+
+const { url } = await startStandaloneServer(server, {
+    listen: { port },
+    context: async () => {
+        return { 
+            dataSources: {
+                countryAPI: new CountryAPI(),
+                personAPI: new PersonAPI(),
+            } 
+        };
+    }
 });
- 
+
+console.log(`🚀  Server ready at: ${url}`);
+
 

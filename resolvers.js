@@ -13,6 +13,12 @@ export const resolvers = {
         post: (parent, args, context, info) => {
             return data.posts.find(post => post.id === args.id);
         },
+        posts: (parent, args, context, info) => {
+            return data.posts;
+        },
+        countries: (parent, args, {dataSources}, info) => {
+            return dataSources.countryAPI.getAllCountries();
+        },
     },
     Person: {
         posts: (parent, args, context, info) => {

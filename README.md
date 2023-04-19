@@ -1,3 +1,4 @@
-Small graphql server implementation that has 2 datasources:
- * Persons comimng from mock rest web service
+Small graphql server implementation that has 3 datasources:
+ * Persons coming from mock rest web service
  * Posts from a local datasource object
+ * Countries coming from a public graphql api

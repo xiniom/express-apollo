@@ -13,9 +13,16 @@ type Post {
     author: Person!
 }
 
+type Country {
+    code: String!
+    name: String!
+    currency: String!
+}
+
 type Query {
     persons: [Person]
     person(id: ID!): Person
     posts: [Post]
     post(id: ID!): Post
+    countries: [Country]
 }
