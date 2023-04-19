@@ -1,11 +1,12 @@
 export const data = {
-    persons: [
+    // Persons will live in an external web service
+    /*persons: [
         { id: "1", name: "Jorge", age: 12 },
         { id: "2", name: "Juan", age: 17 },
         { id: "3", name: "Jose", age: 23 },
         { id: "4", name: "Javier", age: 35 },
-        { id: "5", name: "Jaime", weapon: 42 },
-    ],
+        { id: "5", name: "Jaime", age: 42 },
+    ],*/
     posts: [
         { id: "1", title: "Post 1", body: "Body 1", published: true, author: "1" },
         { id: "2", title: "Post 2", body: "Body 2", published: false, author: "2"  },

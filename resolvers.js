@@ -7,8 +7,8 @@ export const resolvers = {
             console.log(res);
             return res;
         },
-        persons: (parent, args, context, info) => {
-            return data.persons;
+        persons: (parent, args, {dataSources}, info) => {
+            return dataSources.personAPI.getAllPersons();
         },
         post: (parent, args, context, info) => {
             return data.posts.find(post => post.id === args.id);
