@@ -1,0 +1,21 @@
+type Person {
+    id: ID!
+    name: String!
+    age: Int
+    posts: [Post!]!
+}
+
+type Post {
+    id: ID!
+    title: String!
+    body: String!
+    published: Boolean!
+    author: Person!
+}
+
+type Query {
+    persons: [Person]
+    person(id: ID!): Person
+    #posts(author: ID!): [Post]
+    post(id: ID!): Post
+}
