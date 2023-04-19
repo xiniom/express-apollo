@@ -16,6 +16,6 @@ type Post {
 type Query {
     persons: [Person]
     person(id: ID!): Person
-    #posts(author: ID!): [Post]
+    posts: [Post]
     post(id: ID!): Post
 }
